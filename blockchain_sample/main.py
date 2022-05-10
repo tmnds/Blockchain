@@ -26,5 +26,3 @@ foo_blockchain.add_block('one')
 
 for block in foo_blockchain.chain:
     print(block.__dict__) 
-
-    

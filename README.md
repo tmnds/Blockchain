@@ -20,5 +20,3 @@
 ## Mine Block
 
 ## Genesis
-
-
