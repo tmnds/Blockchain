@@ -1,22 +1,31 @@
-# Blockchain Documentation
-
-    A public ledger of transactions.
-
-
-## Block 
-
-```md
-    
-    Fields:
-
-    timestamp
-    last_hash
-    data
-    hash
+**Install search lib**
+```
+pip install pip-search
 ```
 
+**How to search libs**
+```
+pip_search <lib_name>
+```
 
+**Creating a virtual environment**
+```
+python -m venv <name>
+```
 
-## Mine Block
+**Activate the virtual environment**
+```
+source <name>/path/activate
+```
 
-## Genesis
+**Testando**
+```
+echo $VIRTUAL_ENV
+
+```
+
+**Install all packages**
+
+```
+pip install -r requirements.txt
+```
