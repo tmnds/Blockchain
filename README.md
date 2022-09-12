@@ -29,3 +29,9 @@ echo $VIRTUAL_ENV
 ```
 pip install -r requirements.txt
 ```
+
+**Execute modules inside folders**
+```
+python -m <path_wihtout .py in the end>
+Example: python -m backend.blockchain.block
+```
