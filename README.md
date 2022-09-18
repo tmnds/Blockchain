@@ -15,7 +15,7 @@ python -m venv <name>
 
 **Activate the virtual environment**
 ```terminal
-source <name>/path/activate
+source blockchain-env/Scripts/activate
 ```
 
 **Testando**
@@ -36,7 +36,9 @@ python -m <path_wihtout .py in the end>
 Example: python -m backend.blockchain.block
 ```
 
-**Pytest**
+**Run the tests**
+
+Install de Lib
 ```python
 pip install pytest
 ```

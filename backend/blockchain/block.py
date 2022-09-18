@@ -2,6 +2,14 @@ import time
 
 from backend.utils.crypto_hash import crypto_hash
 
+GENESIS_DATA = {
+    'timestamp': 1,
+    'last_hash': 'genesis_last_hash',
+    'hash': 'genesis_hash',
+    'data': []
+}
+
+
 class Block:
     '''
     Block: a unit of storage.
@@ -18,7 +26,13 @@ class Block:
         '''
         Generate genesis Block.
         '''
-        return Block(1, 'genesis_last_hash', 'genesis_hash', [])
+        # return Block(
+            # GENESIS_DATA['timestamp'],
+            # GENESIS_DATA['last_hash'],
+            # GENESIS_DATA['hash'],
+            # GENESIS_DATA['data']
+        # )
+        return Block(**GENESIS_DATA)
 
     @staticmethod
     def mine_block(last_block, data):
@@ -44,7 +58,7 @@ class Block:
 def main():
     
     genesis_block = Block.genesis()
-    block = Block.mine_block(genesis_block, 'foo')
+    block = Block.mine_block(genesis_block, 'foo_data')
     print(block)
 
 if __name__ == '__main__':
