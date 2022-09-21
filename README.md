@@ -8,6 +8,11 @@ pip install pip-search
 pip_search <lib_name>
 ```
 
+**Execution Policy ENV**
+```terminal
+Set-ExecutionPolicy Unrestricted -Force
+```
+
 **Creating a virtual environment**
 ```terminal
 python -m venv <name>
@@ -15,10 +20,15 @@ python -m venv <name>
 
 **Activate the virtual environment**
 ```terminal
-source blockchain-env/Scripts/activate
+source blockchain_env/Scripts/activate
 ```
 
-**Testando**
+**Deactivate the virtual environment**
+```terminal
+deactivate
+```
+
+**Testing**
 ```python
 echo $VIRTUAL_ENV
 
