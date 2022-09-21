@@ -1,3 +1,15 @@
+**Remove all .pyc and .pyo files as well as __pycache__**
+```terminal
+find . | grep -E "(/__pycache__$|\.pyc$|\.pyo$)" | xargs rm -rf
+```
+
+**Remove .pyc files from Git remote repository**
+```terminal
+(git rm *.pyc) or (git rm -f *.pyc) to force
+git commit -a -m 'all pyc files removed'
+git push
+```
+
 **Install search lib**
 ```python
 pip install pip-search
