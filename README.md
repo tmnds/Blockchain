@@ -1,3 +1,15 @@
+# Blockchain Concepts
+...
+### Proof of Work
+...
+### Blockchain Collaboration - Chain Validation
+
+Para realizar a validação dos blocos dentro da Chain, é fundamental que existam algumas regras;
+
+A primeira regra, o bloco deve possuir todos os campos de validação, tais como, timestamp, hash, last_hash e data
+
+# Developer Commands
+
 **Remove all .pyc and .pyo files as well as __pycache__**
 ```terminal
 find . | grep -E "(/__pycache__$|\.pyc$|\.pyo$)" | xargs rm -rf
