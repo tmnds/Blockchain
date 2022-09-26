@@ -77,6 +77,21 @@ class Block:
         
         return 1
 
+    @staticmethod
+    def is_valid_block(last_block, block):
+        '''
+        Validate block by enforcing the following rules:
+         - the block must have the proper last_hash reference
+         - the block must meet the proof of work requirement
+         - the difficulty must only adjust by 1 
+         - the block hash must be a valid combination of the block fields
+        '''
+
+        if block.hash != last_block.hash:
+            raise Exception('The Block last_hash must be correct')
+        
+        if hex_to_binary(block.hash)[0:block.difficulty] != '0' * block.difficulty:
+            raise Exception('The proof of requirement was not met')
 
 
 

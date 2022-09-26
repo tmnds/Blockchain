@@ -2,12 +2,22 @@
 ...
 ### Proof of Work
 ...
-### Blockchain Collaboration - Chain Validation
+### Blockchain Collaboration
 
+**Chain Validation**
+
+É o conceito de validação da blockchain
+O que significa?
 Para realizar a validação dos blocos dentro da Chain, é fundamental que existam algumas regras;
 
-A primeira regra, o bloco deve possuir todos os campos de validação, tais como, timestamp, hash, last_hash e data
+1. O bloco deve possuir os campos corretos de validação, tais como, timestamp, data, last_hash, e hash;
+2. O campo last_hash deve possuir uma referência do bloco que precede o bloco atual, isso é particularmente importante pois cria um link entre o bloco atual e toda blockchain;
+3. O hash do bloco deve ser válido.
+4. Proof of Work deve ser válido (Prova de Trabalho), o bloco deve ter o mesmo número de zeros de acordo com a dificuldade de geração do bloco
 
+
+E por que é necessário o replacement?
+O blockchain não é criado por apenas uma pessoa, mas por várias; Poder do blochain é multiplos nós; Tornando-se descentralizado e sem responsabilidade de gerenciamento de uma instituição, utilizando apenas o poder de processamento das máquinas que colaboram..
 # Developer Commands
 
 **Remove all .pyc and .pyo files as well as __pycache__**
