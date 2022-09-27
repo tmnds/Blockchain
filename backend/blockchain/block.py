@@ -1,3 +1,4 @@
+from dataclasses import dataclass
 import time
 
 from backend.utils.crypto_hash import crypto_hash
@@ -50,14 +51,13 @@ class Block:
         last_hash = last_block.hash
         difficulty = Block.adjust_difficulty(last_block, timestamp)
         nonce = 0
-        hash = crypto_hash(timestamp, last_hash, difficulty, nonce)
-        # print(hash[0:difficulty])
+        hash = crypto_hash(timestamp, last_hash, data, difficulty, nonce)
         
         while hex_to_binary(hash)[0:difficulty] != '0' * difficulty:
             nonce += 1
             timestamp = time.time_ns()
             difficulty = Block.adjust_difficulty(last_block, timestamp)
-            hash = crypto_hash(timestamp, last_hash, difficulty, nonce)
+            hash = crypto_hash(timestamp, last_hash, data, difficulty, nonce)
 
         return Block(timestamp, last_hash, hash, data, difficulty, nonce)
     
@@ -87,12 +87,26 @@ class Block:
          - the block hash must be a valid combination of the block fields
         '''
 
-        if block.hash != last_block.hash:
+        if block.last_hash != last_block.hash:
             raise Exception('The Block last_hash must be correct')
         
         if hex_to_binary(block.hash)[0:block.difficulty] != '0' * block.difficulty:
             raise Exception('The proof of requirement was not met')
 
+        if abs(last_block.difficulty - block.difficulty) > 1:
+            raise Exception('The block difficulty must only adjust by 1')
+        
+        reconstructed_hash = crypto_hash(
+            block.timestamp,
+            block.last_hash,
+            block.data,
+            block.difficulty,
+            block.nonce
+
+        )
+
+        if block.hash != reconstructed_hash:
+            raise Exception('The block hash must be correct')
 
 
     def __repr__(self):
@@ -108,10 +122,17 @@ class Block:
 
 
 def main():
-    
     genesis_block = Block.genesis()
-    block = Block.mine_block(genesis_block, 'foo_data')
-    print(block)
+    bad_block = Block.mine_block(genesis_block, 'foo')
+    # bad_block.last_hash = 'evil_data'
+    
+    # print(genesis_block)
+    # print(bad_block)
+    try:
+        Block.is_valid_block(genesis_block, bad_block)
+    except Exception as e:
+        print(f'is_valid_block: {e}')
+
 
 if __name__ == '__main__':
     main()
