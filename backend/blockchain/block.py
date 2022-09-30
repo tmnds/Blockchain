@@ -27,20 +27,21 @@ class Block:
         self.data = data
         self.difficulty = difficulty
         self.nonce = nonce
-    
-    @staticmethod 
-    def genesis():
-        '''
-        Generate genesis Block.
-        '''
-        # return Block(
-            # GENESIS_DATA['timestamp'],
-            # GENESIS_DATA['last_hash'],
-            # GENESIS_DATA['hash'],
-            # GENESIS_DATA['data']
-        # )
-        return Block(**GENESIS_DATA)
 
+    def __repr__(self):
+        return (
+            'Block('
+            f'timestamp: {self.timestamp}, '
+            f'last_hash: {self.last_hash}, '
+            f'hash: {self.hash}, '
+            f'data: {self.data}, '
+            f'Difficulty: {self.difficulty}, '
+            f'Nonce: {self.nonce})'
+        )
+
+    def __eq__(self, other):
+        return self.__dict__ == other.__dict__
+    
     @staticmethod
     def mine_block(last_block, data):
         '''
@@ -77,6 +78,19 @@ class Block:
         
         return 1
 
+    @staticmethod 
+    def genesis():
+        '''
+        Generate genesis Block.
+        '''
+        # return Block(
+            # GENESIS_DATA['timestamp'],
+            # GENESIS_DATA['last_hash'],
+            # GENESIS_DATA['hash'],
+            # GENESIS_DATA['data']
+        # )
+        return Block(**GENESIS_DATA)
+    
     @staticmethod
     def is_valid_block(last_block, block):
         '''
@@ -107,19 +121,6 @@ class Block:
 
         if block.hash != reconstructed_hash:
             raise Exception('The block hash must be correct')
-
-
-    def __repr__(self):
-        return (
-            'Block('
-            f'timestamp: {self.timestamp}, '
-            f'last_hash: {self.last_hash}, '
-            f'hash: {self.hash}, '
-            f'data: {self.data}, '
-            f'Difficulty: {self.difficulty}, '
-            f'Nonce: {self.nonce})'
-        )
-
 
 def main():
     genesis_block = Block.genesis()
