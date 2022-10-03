@@ -1,1 +1,4 @@
-blockchain_env*
+*.pyc
+*__pycache__*
+*node_modules*
+blockchain_env/
