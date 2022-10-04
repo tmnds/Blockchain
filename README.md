@@ -92,3 +92,11 @@ pip install pytest
 ```python
 python -m pytest <path_test>
 ```
+
+**Run the application and API**
+
+Make sure to activate the virtual environment.
+
+```python
+python3 -m backend.app
+```
