@@ -41,6 +41,12 @@ class Block:
 
     def __eq__(self, other):
         return self.__dict__ == other.__dict__
+
+    def to_json(self):
+        """
+        Serialize the block into a ditionary of its attributes
+        """
+        return self.__dict__
     
     @staticmethod
     def mine_block(last_block, data):
@@ -123,16 +129,20 @@ class Block:
             raise Exception('The block hash must be correct')
 
 def main():
+
     genesis_block = Block.genesis()
-    bad_block = Block.mine_block(genesis_block, 'foo')
+    block = Block.mine_block(genesis_block, 'foo')
+    print(block.to_json())
+    # genesis_block = Block.genesis()
+    # bad_block = Block.mine_block(genesis_block, 'foo')
     # bad_block.last_hash = 'evil_data'
     
     # print(genesis_block)
     # print(bad_block)
-    try:
-        Block.is_valid_block(genesis_block, bad_block)
-    except Exception as e:
-        print(f'is_valid_block: {e}')
+    # try:
+        # Block.is_valid_block(genesis_block, bad_block)
+    # except Exception as e:
+        # print(f'is_valid_block: {e}')
 
 
 if __name__ == '__main__':

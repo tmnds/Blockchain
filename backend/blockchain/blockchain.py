@@ -31,6 +31,17 @@ class Blockchain:
             raise Exception(f'Cannot replace. The incoming chain is invalid: {e}')
 
         self.chain = chain
+    
+    def to_json(self):
+        """
+        Serialize the blockchain into a list of blocks.
+        """
+        # serialized_chain = []
+        # for block in self.chain:
+            # serialized_chain.append(block.to_json())
+        # return serialized_chain
+        return list(map(lambda block: block.to_json(), self.chain))
+
 
     @staticmethod
     def is_valid_chain(chain):
@@ -53,9 +64,12 @@ class Blockchain:
 def main():
     
     blockchain = Blockchain()
-    blockchain.is_valid_chain(blockchain.add_block('first_block'))
-    print(blockchain)
-    print(f'blockchain.py __name__: {__name__}')
+    blockchain.add_block('foo')
+    blockchain.add_block('data')
+    print(blockchain.chain)
+    # blockchain.is_valid_chain(blockchain.add_block('first_block'))
+    # print(blockchain)
+    # print(f'blockchain.py __name__: {__name__}')
 
 
 if __name__ == '__main__':
