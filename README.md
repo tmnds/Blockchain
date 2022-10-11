@@ -18,6 +18,19 @@ Para realizar a validação dos blocos dentro da Chain, é fundamental que exist
 
 E por que é necessário o replacement?
 O blockchain não é criado por apenas uma pessoa, mas por várias; Poder do blochain é multiplos nós; Tornando-se descentralizado e sem responsabilidade de gerenciamento de uma instituição, utilizando apenas o poder de processamento das máquinas que colaboram..
+
+
+### Real-Time Messaging Network throught Publisher and Subscriber
+
+Padrão da rede recebe o conceito de várias mensagens através de canais. Estes canais carregam as mensagens que são enviadas através dos publishers.
+
+Os publishers não se preocupam sobre quem está olhando os canais. Tudo que se preocupam é em garantir que as mensagens estão sendo enviadas através do canais.
+
+Enquanto isto, os subscribers permanecem conectados em broadcast nos canais, e não se preocupa em quem está enviando a mensagem; Os subscribers podem escolher quais dos canais são consumidos.
+
+
+Tecnologia utilizada é o PubNub.
+
 # Developer Commands
 
 **Remove all .pyc and .pyo files as well as __pycache__**
