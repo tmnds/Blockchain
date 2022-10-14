@@ -98,6 +98,13 @@ class Block:
         return Block(**GENESIS_DATA)
     
     @staticmethod
+    def from_json(block_json):
+        """
+        Deserialize a block's json representation back into a block instance.
+        """
+        return Block(**block_json)
+    
+    @staticmethod
     def is_valid_block(last_block, block):
         '''
         Validate block by enforcing the following rules:

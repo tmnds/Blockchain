@@ -6,9 +6,9 @@ from flask import Flask, jsonify
 from backend.blockchain.blockchain import Blockchain
 from backend.pubsub import PubSub
 
-pubsub = PubSub()
 app = Flask(__name__) 
 blockchain = Blockchain()
+pubsub = PubSub(blockchain)
 
 PORT = 5000
 
@@ -29,7 +29,7 @@ def route_blockchain_mine():
     transaction_data = 'stubbed_transaction_data'
     
     blockchain.add_block(transaction_data)
-    
+
     block = blockchain.chain[-1]
     pubsub.broadcast_block(block)
 
