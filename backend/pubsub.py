@@ -1,9 +1,10 @@
 import time
 
-from backend.blockchain.block import Block
 from pubnub.pubnub import PubNub
 from pubnub.pnconfiguration import PNConfiguration
 from pubnub.callbacks import SubscribeCallback
+
+from backend.blockchain.block import Block
 
 pnconfig = PNConfiguration()
 pnconfig.publish_key = 'pub-c-189ab62e-80d1-4c44-b706-eb989c4e8f34'
@@ -46,7 +47,10 @@ class PubSub():
         """
         Publish the message object to the channel.
         """  
+        # self.pubnub.unsubscribe().channels(channel).execute()
         self.pubnub.publish().channel(channel).message(message).sync()
+        # self.pubnub.subscribe().channels(channel).execute()
+
     
     def broadcast_block(self, block):
         """
