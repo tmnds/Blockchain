@@ -19,19 +19,18 @@ class Listener(SubscribeCallback):
         self.blockchain = blockchain
 
     def message(self, pubnub, message_object):
-        print(f'/n-- Incoming channel: {message_object.channel} I Message {message_object.message}')
+        print(f'\n-- Incoming channel: {message_object.channel} I Message {message_object.message}')
 
         if message_object.channel == CHANNELS['BLOCK']:
             block = Block.from_json(message_object.message)
             potential_chain = self.blockchain.chain[:]
             potential_chain.append(block)
-            print(potential_chain)
 
             try:
                 self.blockchain.replace_chain(potential_chain)
-                print('/n -- Successfully replaced the local chain')
+                print('\n -- Successfully replaced the local chain')
             except Exception as e:
-                print(f'/n -- Did not replace chain: {e}')
+                print(f'\n -- Did not replace chain: {e}')
 
 class PubSub():
     """
@@ -47,9 +46,9 @@ class PubSub():
         """
         Publish the message object to the channel.
         """  
-        # self.pubnub.unsubscribe().channels(channel).execute()
+        self.pubnub.unsubscribe().channels(channel).execute()
         self.pubnub.publish().channel(channel).message(message).sync()
-        # self.pubnub.subscribe().channels(channel).execute()
+        self.pubnub.subscribe().channels(channel).execute()
 
     
     def broadcast_block(self, block):
