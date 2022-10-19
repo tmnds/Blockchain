@@ -31,6 +31,22 @@ Enquanto isto, os subscribers permanecem conectados em broadcast nos canais, e n
 
 Tecnologia utilizada é o PubNub.
 
+
+### Wallets, Keys and Transactions
+
+Wallet is a core of the cryptocurrency with a few main aspects to it.
+
+1. Balance
+    It's how much currency an individual has collected in the blockchain history.
+2. Private Key
+    Used to Generate unique signatures.
+3. Public Key
+    Used to verify signatures.
+4. Address
+    Other individuals can send currency to that wallet.
+
+Transactions are the objects that capture the information behind the exchange of currency between two individuals
+
 # Developer Commands
 
 **Remove all .pyc and .pyo files as well as __pycache__**
