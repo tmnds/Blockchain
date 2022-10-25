@@ -22,7 +22,7 @@ def test_genesis():
     assert isinstance(genesis, Block)
 
     for key, value in GENESIS_DATA.items():
-        getattr(genesis, key) == value
+        assert getattr(genesis, key) == value
 
 def test_quickly_mined_block():
     last_block = Block.mine_block(Block.genesis(), 'foo')
