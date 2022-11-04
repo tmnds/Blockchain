@@ -28,7 +28,7 @@ class Transaction:
         output = {}
         output[recipient] = amount
         output[sender_wallet.address] = sender_wallet.balance - amount
-        print(output.key())
+        # print(output.key())
         return output
     
     def create_input(self, sender_wallet, output):
@@ -55,6 +55,11 @@ class Transaction:
             self.output[recipient] = self.output[recipient] + amount
         else:
             self.output[recipient] = amount
+
+        self.output[sender_wallet.address] = \
+            self.output[sender_wallet.address] - amount
+        
+        self.input = self.create_input(sender_wallet, self.output)        
 
 
 def main():
