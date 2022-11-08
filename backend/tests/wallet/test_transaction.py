@@ -56,7 +56,6 @@ def test_transaction_update():
     )
 
     to_first_again_amount = 25
-
     transaction.update(sender_wallet, first_recipient, to_first_again_amount)
 
     assert transaction.output[first_recipient] == first_amount + to_first_again_amount
