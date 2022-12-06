@@ -18,9 +18,8 @@ class Wallet:
     Allows a miner to authorize transactions.
     """
 
-    def __init__(self, blockchain=None, address=None):
+    def __init__(self, blockchain=None):
         self.blockchain = blockchain
-        self.address = address
         self.address = str(uuid.uuid4())[0:8]
         self.private_key = ec.generate_private_key(
             ec.SECP256K1(),
@@ -83,6 +82,9 @@ class Wallet:
         """
 
         balance = STARTING_BALANCE
+        
+        if not blockchain:
+            return balance
 
         for block in blockchain.chain:
             for transaction in block.data:

@@ -16,6 +16,9 @@ def post_wallet_transaction(recipient, amount):
         json={"recipient": recipient,"amount": amount}
     ).json()
 
+
+
+
 start_blockchain = get_blockchain()
 print(f'start_blockchain: {start_blockchain}')
 
