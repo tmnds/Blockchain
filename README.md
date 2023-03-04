@@ -83,7 +83,7 @@ python -m venv <name>
 
 **Activate the virtual environment**
 ```terminal
-source blockchain_env/Scripts/activate
+source blockchain-env/Scripts/activate
 ```
 
 **Deactivate the virtual environment**
