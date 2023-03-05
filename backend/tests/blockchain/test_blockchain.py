@@ -2,6 +2,8 @@ import pytest
 
 from backend.blockchain.blockchain import Blockchain
 from backend.blockchain.block import GENESIS_DATA, Block
+from backend.wallet.wallet import Wallet
+from backend.wallet.transaction import Transaction
 
 
 
@@ -21,7 +23,7 @@ def test_add_block():
 def blockchain_three_blocks():
     blockchain = Blockchain()
     for i in range(3):
-        blockchain.add_block(i)
+        blockchain.add_block([Transaction(Wallet(), 'recipient', i).to_json()])
     
     return blockchain
 
@@ -53,3 +55,14 @@ def test_replace_chain_bad_chain(blockchain_three_blocks):
 
     with pytest.raises(Exception, match='The incoming chain is invalid'):
         blockchain.replace_chain(blockchain_three_blocks.chain)
+
+
+def test_valid_transaction_chain(blockchain_three_blocks):
+    Blockchain.is_valid_transaction_chain(blockchain_three_blocks.chain)
+
+def test_is_valid_transaction_chain_duplicate_transactions(blockchain_three_blocks):
+    transaction = Transaction(Wallet(), 'recipient', 1).to_json()
+    blockchain_three_blocks.add_block([transaction, transaction])
+
+    with pytest.raises(Exception, match='is not unique'):
+        Blockchain.is_valid_transaction_chain(blockchain_three_blocks.chain)
